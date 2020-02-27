@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ENG">
+	<head>
+		<meta charset="UTF-8">
+		<title>Chain Saver!</title>
+
+		<!-- Import MD5 from lib -->
+		<script src="{{ url_for ('static', filename='js/md5.min.js') }}"></script>
+
+		<!-- Import Miligram lib from CDN -->
+		<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css">
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/milligram/1.3.0/milligram.css">
+
+		<!-- Import main CSS from lib -->
+		<link rel="stylesheet" href="{{ url_for ('static', filename='css/main.css') }}">
+	</head>
+<body>
+
+  {% block content %}{% endblock %}
+
+  <!-- Footer -->
+  <section class="container">
+    <blockquote>
+      <p><em>Do you like this? Get the code at <a href="https://github.com/yammadev/chain" target="_blank">Github</a></em></p>
+    </blockquote>
+  </section>
+
+	<!-- Import Jquery 3.4.1 Slim Mimified from CDN -->
+	<script
+  	src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+  	integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+  	crossorigin="anonymous">
+	</script>
+</body>
+
+  {% block scripts %}{% endblock %}
+</html>

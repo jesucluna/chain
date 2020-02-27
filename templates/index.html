@@ -1,0 +1,89 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<section class="container">
+	<h1>Chain Saver!</h1>
+	<h5>Write down a String to be sent as Hash using <strong>MD5</strong></h5>
+
+	<!-- Form {{ url_for('chain') }}"-->
+	<div class="row">
+		<div class="col-md-4 offset-md-4 my-auto">
+			<div class="card">
+				<div class="card-header">
+					<form action="/chain" method="POST" class="column column-70">
+						<fieldset>
+							<label for="content">Your String</label>
+							<input class="form-control" type="text" name="content" id="content" placeholder="Ex. Lucky"
+								required autofocus>
+
+							<p id="message"></p>
+
+							<input type="text" name="hash" id="hash" hidden>
+							<input type="text" name="algorithm" value="MD5" hidden>
+							<input type="submit" value="Save" />
+						</fieldset>
+					</form>
+					<form class="column column-80" action="/chain" method="GET">
+						<fieldset>
+							<button  class="form-control" type="submit" class="btn-block">Show</button>
+						</fieldset>
+					</form>
+					<div class="card-body" method='GET'>
+						<ul class='list-group'>
+							{% for chain in chains %}
+							<li class='list-group-item'>
+								{{chain.hash_text}}
+							</li>
+							{% endfor %}
+						</ul>
+					</div>
+					<h4>Other options</h4>
+					<form class="column column-80" action="/chain/last" method="GET">
+						<fieldset>
+							<button  class="form-control" type="submit" class="btn-block">Get Last Hash</button>
+						</fieldset>
+					</form>
+						{% if last%}
+							<h3>{{last.hash_text}}</h3>
+						{% else %}
+							<h3>Database is empty... Please fill it</h3>
+						{% endif %}
+					
+					<form class="column column-80" action="/api/v1/chain" method="GET">
+						<fieldset>
+							<button  target="_blank" href="templates/json.html" class="form-control" type="submit" class="btn-block">Get all hashes in json</button>
+						</fieldset>
+
+					</form>
+				</div>
+				
+			</div>
+
+		</div>
+
+
+	</div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<!-- Hasher function -->
+<script type="text/javascript">
+	// When document ready execute
+	$(document).ready(function () {
+		// When user types
+		$('#content').bind('keyup', function () {
+			var string = $(this).val();     // Get string or null
+
+			// Is it there a string? If so, convert it using MD5, otherwise keep it null
+			var hash = !!string ? md5(string) : null;
+
+			// Insert value to hash hidden input
+			$('#hash').val(hash);
+
+			// Set message if there's not a null hash
+			$('#message').text(!!hash ? 'Your generated hash is: ' + hash : '');
+		});
+	});
+</script>
+{% endblock %}
