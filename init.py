@@ -67,7 +67,7 @@ def list_json():
 def list():
 	return 'return list template'	## TODO
 
-#pip3 install Flask-SQLAlchemyon
+#pip3 install Flask-SQLAlchemy
 #pip install -U Flask-SQLAlchemy
 #pip3 install -U Flask-SQLAlchemy
 #pip3 install sqlachemy

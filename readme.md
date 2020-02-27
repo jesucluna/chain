@@ -1,5 +1,6 @@
 # Authors
 - Yefferson Marín
+- Jesus Caraballo
 
 # Simple Guide
 ## Development
@@ -23,6 +24,9 @@
 
   # Install flask
   $ pip install Flask
+
+  #Install Flask-SQLAlchemy
+  $ pip install Flask-SQLAlchemy
 ```
 
 ### 2. Run
